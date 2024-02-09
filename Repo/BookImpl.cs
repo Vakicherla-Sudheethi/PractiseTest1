@@ -1,4 +1,5 @@
-﻿using PractiseTest1.DTO;
+﻿using Microsoft.EntityFrameworkCore;
+using PractiseTest1.DTO;
 using PractiseTest1.Entities;
 namespace PractiseTest1.Repo
 {
@@ -92,5 +93,62 @@ namespace PractiseTest1.Repo
 
             return bookDTO;
         }
+
+        public List<BookDTO> SearchBooksByAuthor(string author)
+        {
+            var books = _context.Books
+                .Where(b => b.Author.Contains(author))
+                .Select(b => new BookDTO
+                {
+                    BookId = b.BookId,
+                    Title = b.Title,
+                    Author = b.Author,
+                    Genre = b.Genre,
+                    ISBN = b.ISBN,
+                    PublishDate = b.PublishDate
+                })
+                .ToList();
+
+            return books;
+        }
+
+        // New method to search books by genre
+        public List<BookDTO> SearchBooksByGenre(string genre)
+        {
+            var books = _context.Books
+                .Where(b => b.Genre.Contains(genre))
+                .Select(b => new BookDTO
+                {
+                    BookId = b.BookId,
+                    Title = b.Title,
+                    Author = b.Author,
+                    Genre = b.Genre,
+                    ISBN = b.ISBN,
+                    PublishDate = b.PublishDate
+                })
+                .ToList();
+
+            return books;
+        }
+
+        public List<BookDTO> SearchBooksByTitle(string title)
+        {
+            var result = _context.Books
+                .Where(b => b.Title.ToUpper().Contains(title.ToUpper()))
+                .Select(b => new BookDTO
+                {
+                    BookId = b.BookId,
+                    Title = b.Title,
+                    Author = b.Author,
+                    Genre = b.Genre,
+                    ISBN = b.ISBN,
+                    PublishDate = b.PublishDate
+                })
+                .ToList();
+
+            return result;
+        }
+
+
     }
 }

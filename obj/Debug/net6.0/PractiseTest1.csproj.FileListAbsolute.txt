@@ -88,3 +88,4 @@ C:\Users\2000112376\source\repos\PractiseTest1\PractiseTest1\obj\Debug\net6.0\re
 C:\Users\2000112376\source\repos\PractiseTest1\PractiseTest1\obj\Debug\net6.0\PractiseTest1.pdb
 C:\Users\2000112376\source\repos\PractiseTest1\PractiseTest1\obj\Debug\net6.0\PractiseTest1.genruntimeconfig.cache
 C:\Users\2000112376\source\repos\PractiseTest1\PractiseTest1\obj\Debug\net6.0\ref\PractiseTest1.dll
+C:\Users\2000112376\source\repos\PractiseTest1\PractiseTest1\obj\Debug\net6.0\PractiseTest1.sourcelink.json

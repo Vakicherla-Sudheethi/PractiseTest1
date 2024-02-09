@@ -5,6 +5,7 @@ using System;
 using log4net;
 using PractiseTest1.DTO;
 using PractiseTest1.Repo;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PractiseTest1.Controllers
 {
@@ -20,14 +21,16 @@ namespace PractiseTest1.Controllers
             _logger = logger;
         }
 
-        [HttpGet("GetAllBooks")]
+        [HttpGet,Route("GetAllBooks")]
+        [Authorize(Roles ="Admin,User")]
         public IActionResult GetAllBooks()
         {
             var books = unitOfWork.BookImplObject.GetAll();
             return Ok(books);
         }
 
-        [HttpGet("GetBookById/{id}")]
+        [HttpGet,Route("GetBookById/{id}")]
+        [Authorize(Roles = "Admin,User")]
         public IActionResult GetBookById(int id)
         {
             try
@@ -48,7 +51,8 @@ namespace PractiseTest1.Controllers
             }
         }
 
-        [HttpPost("AddBook")]
+        [HttpPost,Route("AddBook")]
+        [Authorize(Roles ="Admin")]
         public IActionResult AddBook(BookDTO newBook)
         {
             try
@@ -73,6 +77,8 @@ namespace PractiseTest1.Controllers
         }
 
         [HttpPut("UpdateBook/{id}")]
+        [Authorize(Roles = "Admin")]
+
         public IActionResult UpdateBook(int id, BookDTO updatedBook)
         {
             updatedBook.BookId = id;
@@ -99,6 +105,8 @@ namespace PractiseTest1.Controllers
         }
 
         [HttpDelete("DeleteBook/{id}")]
+        [Authorize(Roles = "Admin")]
+
         public IActionResult DeleteBook(int id)
         {
             try
@@ -121,5 +129,72 @@ namespace PractiseTest1.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpGet("SearchBooksByAuthor/{author}")]
+        [Authorize(Roles = "Admin,User")]
+        public IActionResult SearchBooksByAuthor(string author)
+        {
+            try
+            {
+                var books = unitOfWork.BookImplObject.SearchBooksByAuthor(author);
+
+                if (books == null || books.Count == 0)
+                {
+                    return NotFound($"No books found for author: {author}");
+                }
+
+                return Ok(books);
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex.Message);
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpGet("SearchBooksByGenre/{genre}")]
+        [Authorize(Roles ="User")]
+        public IActionResult SearchBooksByGenre(string genre)
+        {
+            try
+            {
+                var books = unitOfWork.BookImplObject.SearchBooksByGenre(genre);
+
+                if (books == null || books.Count == 0)
+                {
+                    return NotFound($"No books found for genre: {genre}");
+                }
+
+                return Ok(books);
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex.Message);
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpGet("SearchBooksByTitle/{title}")]
+        [AllowAnonymous] // Allow all users to search books by title
+        public IActionResult SearchBooksByTitle(string title)
+        {
+            try
+            {
+                var books = unitOfWork.BookImplObject.SearchBooksByTitle(title);
+
+                if (books == null || books.Count == 0)
+                {
+                    return NotFound($"No books found for title: {title}");
+                }
+
+                return Ok(books);
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex.Message);
+                return StatusCode(500, ex.Message);
+            }
+        }
+
     }
 }

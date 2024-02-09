@@ -28,14 +28,14 @@ namespace PractiseTest1.Controllers
             _logger = logger;
         }
 
-        [HttpGet("GetAllUsers")]
+        [HttpGet, Route("GetAllUsers")]
         public IActionResult GetAllUsers()
         {
             var users = unitOfWork.UserImplObject.GetAll();
             return Ok(users);
         }
 
-        [HttpPost("Validate")]
+        [HttpPost, Route("Validate")]
         [AllowAnonymous]
         public IActionResult Validate(Validate login)
         {
@@ -96,7 +96,7 @@ namespace PractiseTest1.Controllers
             return jwtToken;
         }
 
-        [HttpPost("AddNewUser")]
+        [HttpPost, Route("AddNewUser")]
         public IActionResult AddNewUser(UserDTO User)
         {
             try
@@ -120,7 +120,7 @@ namespace PractiseTest1.Controllers
             }
         }
 
-        [HttpGet("GetUserById/{id}")]
+        [HttpGet, Route("GetUserById/{id}")]
         public IActionResult GetUserById(int id)
         {
             try
@@ -138,7 +138,7 @@ namespace PractiseTest1.Controllers
             }
         }
 
-        [HttpPut("UpdateUser/{id}")]
+        [HttpPut, Route("UpdateUser/{id}")]
         public IActionResult UpdateUser(int id, UserDTO userUpdate)
         {
             userUpdate.UserID = id;
@@ -164,7 +164,7 @@ namespace PractiseTest1.Controllers
             }
         }
 
-        [HttpDelete("DeleteUser/{id}")]
+        [HttpDelete, Route("DeleteUser/{id}")]
         public IActionResult DeleteUser(int id)
         {
             try
