@@ -78,7 +78,6 @@ namespace PractiseTest1.Controllers
 
         [HttpPut("UpdateBook/{id}")]
         [Authorize(Roles = "Admin")]
-
         public IActionResult UpdateBook(int id, BookDTO updatedBook)
         {
             updatedBook.BookId = id;
