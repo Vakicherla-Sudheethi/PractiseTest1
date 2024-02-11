@@ -20,7 +20,8 @@ namespace PractiseTest1.Repo
                 Author = item.Author,
                 Genre = item.Genre,
                 ISBN = item.ISBN,
-                PublishDate = item.PublishDate
+                PublishDate = item.PublishDate,
+                
             };
 
             _context.Books.Add(bookNew);
@@ -50,7 +51,8 @@ namespace PractiseTest1.Repo
                     Author = b.Author,
                     Genre = b.Genre,
                     ISBN = b.ISBN,
-                    PublishDate = b.PublishDate
+                    PublishDate = b.PublishDate,
+                   
                 })
                 .ToList();
             return result;
@@ -68,6 +70,7 @@ namespace PractiseTest1.Repo
             bookUpdate.Genre = item.Genre;
             bookUpdate.ISBN = item.ISBN;
             bookUpdate.PublishDate = item.PublishDate;
+            
 
             _context.SaveChanges();
 
@@ -88,7 +91,8 @@ namespace PractiseTest1.Repo
                 Author = book.Author,
                 Genre = book.Genre,
                 ISBN = book.ISBN,
-                PublishDate = book.PublishDate
+                PublishDate = book.PublishDate,
+               
             };
 
             return bookDTO;
@@ -105,7 +109,8 @@ namespace PractiseTest1.Repo
                     Author = b.Author,
                     Genre = b.Genre,
                     ISBN = b.ISBN,
-                    PublishDate = b.PublishDate
+                    PublishDate = b.PublishDate,
+                   
                 })
                 .ToList();
 
@@ -124,7 +129,8 @@ namespace PractiseTest1.Repo
                     Author = b.Author,
                     Genre = b.Genre,
                     ISBN = b.ISBN,
-                    PublishDate = b.PublishDate
+                    PublishDate = b.PublishDate,
+                   
                 })
                 .ToList();
 
@@ -142,7 +148,8 @@ namespace PractiseTest1.Repo
                     Author = b.Author,
                     Genre = b.Genre,
                     ISBN = b.ISBN,
-                    PublishDate = b.PublishDate
+                    PublishDate = b.PublishDate,
+                    
                 })
                 .ToList();
 

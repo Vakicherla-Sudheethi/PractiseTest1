@@ -16,5 +16,6 @@ namespace PractiseTest1.Entities
     public string ISBN { get; set; }
         [Required]
     public DateTime PublishDate { get; set; }
+        
     }
 }

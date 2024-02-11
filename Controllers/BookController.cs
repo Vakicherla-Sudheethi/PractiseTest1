@@ -6,6 +6,7 @@ using log4net;
 using PractiseTest1.DTO;
 using PractiseTest1.Repo;
 using Microsoft.AspNetCore.Authorization;
+using System.Net.Http.Headers;
 
 namespace PractiseTest1.Controllers
 {
