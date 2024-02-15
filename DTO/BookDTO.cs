@@ -7,7 +7,9 @@
         public string Author { get; set; }
         public string Genre { get; set; }
         public string ISBN { get; set; }
+        public string Publisher { get; set; }
         public DateTime PublishDate { get; set; }
+         public int Copies { get; set; }
         
     }
 }

@@ -14,8 +14,14 @@ namespace PractiseTest1.Entities
     public string Genre { get; set; }
         [Required]
     public string ISBN { get; set; }
+
+        [Required]
+        public string Publisher { get; set; }
         [Required]
     public DateTime PublishDate { get; set; }
+
+        [Required]
+        public int Copies { get; set; }
         
     }
 }

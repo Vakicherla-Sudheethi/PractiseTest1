@@ -20,7 +20,9 @@ namespace PractiseTest1.Repo
                 Author = item.Author,
                 Genre = item.Genre,
                 ISBN = item.ISBN,
+                Publisher=item.Publisher,
                 PublishDate = item.PublishDate,
+                Copies = item.Copies,
                 
             };
 
@@ -51,7 +53,9 @@ namespace PractiseTest1.Repo
                     Author = b.Author,
                     Genre = b.Genre,
                     ISBN = b.ISBN,
+                    Publisher = b.Publisher,
                     PublishDate = b.PublishDate,
+                    Copies = b.Copies,
                    
                 })
                 .ToList();
@@ -69,7 +73,9 @@ namespace PractiseTest1.Repo
             bookUpdate.Author = item.Author;
             bookUpdate.Genre = item.Genre;
             bookUpdate.ISBN = item.ISBN;
+            bookUpdate.Publisher = item.Publisher;
             bookUpdate.PublishDate = item.PublishDate;
+            bookUpdate.Copies = item.Copies;
             
 
             _context.SaveChanges();
@@ -91,7 +97,9 @@ namespace PractiseTest1.Repo
                 Author = book.Author,
                 Genre = book.Genre,
                 ISBN = book.ISBN,
+                Publisher = book.Publisher,
                 PublishDate = book.PublishDate,
+                Copies = book.Copies,
                
             };
 
@@ -109,7 +117,9 @@ namespace PractiseTest1.Repo
                     Author = b.Author,
                     Genre = b.Genre,
                     ISBN = b.ISBN,
+                    Publisher = b.Publisher,
                     PublishDate = b.PublishDate,
+                    Copies = b.Copies,
                    
                 })
                 .ToList();
@@ -117,7 +127,7 @@ namespace PractiseTest1.Repo
             return books;
         }
 
-        // New method to search books by genre
+        
         public List<BookDTO> SearchBooksByGenre(string genre)
         {
             var books = _context.Books
@@ -129,7 +139,9 @@ namespace PractiseTest1.Repo
                     Author = b.Author,
                     Genre = b.Genre,
                     ISBN = b.ISBN,
+                    Publisher = b.Publisher,
                     PublishDate = b.PublishDate,
+                    Copies = b.Copies,
                    
                 })
                 .ToList();
@@ -148,13 +160,17 @@ namespace PractiseTest1.Repo
                     Author = b.Author,
                     Genre = b.Genre,
                     ISBN = b.ISBN,
+                    Publisher = b.Publisher,
                     PublishDate = b.PublishDate,
+                    Copies = b.Copies,
                     
                 })
                 .ToList();
 
             return result;
         }
+
+       
 
 
     }

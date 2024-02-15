@@ -175,7 +175,7 @@ namespace PractiseTest1.Controllers
         }
 
         [HttpGet("SearchBooksByTitle/{title}")]
-        [AllowAnonymous] // Allow all users to search books by title
+        [AllowAnonymous] 
         public IActionResult SearchBooksByTitle(string title)
         {
             try
@@ -195,6 +195,8 @@ namespace PractiseTest1.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+       
 
     }
 }
